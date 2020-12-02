@@ -15,7 +15,7 @@ db = SQLAlchemy(app)
 
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    user_id = db.Column(db.String(6), unique = True, nullable = False)
+    emp_no = db.Column(db.String(6), unique = True, nullable = False)
     user_name = db.Column(db.String(50), unique = False, nullable = False)
     dept = db.Column(db.String(20), unique = False, nullable = True)
     email = db.Column(db.String(60), unique = True, nullable = False)
@@ -25,7 +25,7 @@ class Users(db.Model):
 
     def __repr__(self):
         user_repr = f"ID: {self.id}" \
-                    f"User ID: {self.user_id}" \
+                    f"User ID: {self.emp_no}" \
                     f"Name: {self.user_name}" \
                     f"Department: {self.dept}" \
                     f"Email: {self.email}" \
@@ -49,19 +49,17 @@ def sign_up():
 
         req = request.form
 
-        new_user = Users(user_id=req['user_id'],
-                         username=req['user_name'],
-                         dept=req['dept'],
-                         email=req['email'],
-                         password=req['password'])
+        new_user = Users(emp_no=req["emp_no"],
+                         user_name=req["user_name"],
+                         dept=req["dept"],
+                         email=req["email"],
+                         password=req["password"])
 
         print(new_user)
         db.session.add(new_user)
         db.session.commit()
+        return redirect ('/')
 
-
-        return redirect('/')
-                
     return render_template('signup.html', title = 'Sign-Up')
 
 
