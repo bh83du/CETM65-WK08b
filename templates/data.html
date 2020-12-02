@@ -8,18 +8,20 @@
 <table class="styled-table">
     <thead>
         <tr>
+        <th>User ID</th>
         <th>Name</th>
         <th>Department</th>
         <th>Email</th>
         <th>Password</th>
         </tr>
     </thead>
-        {% for dict_item in my_data %}  
+        {% for user in all_users %}  
         <tr>
-                <td>{{ dict_item['name'] }}</td> 
-                <td>{{ dict_item['dept'] }}</td> 
-                <td>{{ dict_item['email'] }}</td> 
-                <td>{{ dict_item['password'] }}</td>   
+                <td>{{ user.user_id }}</td> 
+                <td>{{ user.user_name }}</td>
+                <td>{{ user.dept }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.password }}</td>   
         </tr>
 
             

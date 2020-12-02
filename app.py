@@ -18,17 +18,28 @@ class Users(db.Model):
     user_id = db.Column(db.String(6), unique = True, nullable = False)
     user_name = db.Column(db.String(50), unique = False, nullable = False)
     dept = db.Column(db.String(20), unique = False, nullable = True)
-    password = db.Column(db.String(12))
+    email = db.Column(db.String(60), unique = True, nullable = False)
+    password = db.Column(db.String(30))
 
 # Define __repr__ method for the table
 
     def __repr__(self):
-        user_repr = f"User ID: {self.user_id}" \
+        user_repr = f"ID: {self.id}" \
+                    f"User ID: {self.user_id}" \
                     f"Name: {self.user_name}" \
                     f"Department: {self.dept}" \
+                    f"Email: {self.email}" \
                     f"Password: {self.password}" \
 
         return user_repr
+
+
+# Add function for Default route
+
+@app.route('/')
+def data():
+    all_users = Users.query.all() # Returns all records
+    return render_template('data.html', all_users=all_users)
 
 # Add function for Route 'Sign-Up'
 
@@ -37,13 +48,21 @@ def sign_up():
     if request.method == "POST":
 
         req = request.form
-        print(req)
+
+        new_user = Users(user_id=req['user_id'],
+                         username=req['user_name'],
+                         dept=req['dept'],
+                         email=req['email'],
+                         password=req['password'])
+
+        print(new_user)
+        db.session.add(new_user)
+        db.session.commit()
+
 
         return redirect('/')
-
+                
     return render_template('signup.html', title = 'Sign-Up')
 
 
 app.run(debug=True)
-
-
