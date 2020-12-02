@@ -5,7 +5,7 @@
   }
 
   div.col {
-    background-color: blanchedalmond;
+    background-color: rgb(193, 252, 175);
     width: 300px;
     border: 15px solid green;
     padding: 50px;
@@ -23,23 +23,33 @@
   }
 
   div.container {
-    margin: auto;
-    width: 35%;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 35%;
   }
 
+  div.table {
+    background-color: rgb(193, 252, 175);
+    margin-right: auto;
+    margin-left: auto;
+    width: 800px;
+    border: 15px solid green;
+    padding: 50px;
+  }
   .styled-table {
-  border-collapse: collapse;
-  margin: auto;
+  border-collapse: seperate;
+  margin-left: auto;
+  margin-right: auto;
   margin-top: 50px;
   font-size: 0.9em;
   font-family: Arial, Helvetica, sans-serif;
   min-width: 400px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 20px green;
 }
 
 .styled-table thead tr {
-  background-color: rgb(185, 215, 221);
-  color: #ffffff;
+  background-color: rgb(193, 252, 175);
+  color: green;
   text-align: left;
 }
 
@@ -48,14 +58,10 @@
     padding: 12px 15px;
 }
 
-.styled-table tbody tr {
-  border-bottom: 1px solid #dddddd;
-}
-
 .styled-table tbody tr:nth-of-type(even) {
-  background-color: #f3f3f3;
+  background-color: #b9e0c8;
 }
 
-.styled-table tbody tr:last-of-type {
-  border-bottom: 2px solid rgb(185, 215, 221);
+.styled-table tbody tr:nth-of-type(odd) {
+  background-color: #b7dfb7;
 }

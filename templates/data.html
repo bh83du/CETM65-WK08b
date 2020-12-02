@@ -4,29 +4,33 @@
 {% block title %}Data{% endblock %}
 
 {% block main %}
-
-<table class="styled-table">
-    <thead>
-        <tr>
-        <th>User ID</th>
-        <th>Name</th>
-        <th>Department</th>
-        <th>Email</th>
-        <th>Password</th>
-        </tr>
-    </thead>
-        {% for user in all_users %}  
-        <tr>
-                <td>{{ user.emp_no }}</td> 
-                <td>{{ user.user_name }}</td>
-                <td>{{ user.dept }}</td>
-                <td>{{ user.email }}</td>
-                <td>{{ user.password }}</td>   
-        </tr>
-
-            
-        {% endfor %}
-        
-</table>
+<div class="container">
+    <div class="row">
+      <div class="table">
+        <h2>Current Employees</h2>
+        <hr>
+            <table class="styled-table">
+                <thead>
+                    <tr>
+                    <th>User ID</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    </tr>
+                </thead>
+                    {% for user in all_users %}  
+                    <tr>
+                            <td>{{ user.emp_no }}</td> 
+                            <td>{{ user.user_name }}</td>
+                            <td>{{ user.dept }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.password }}</td>   
+                    </tr>
+    {% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
 
 {% endblock %}
